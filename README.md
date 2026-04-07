@@ -127,6 +127,6 @@ Il file include tre scenari di test:
 
 ## Link
 
-[CodePen del progetto](https://codepen.io/DM-Square/pen/raMZxjZ)
+[CodePen](https://codepen.io/DM-Square/pen/raMZxjZ) del progetto.
 
-Interessato a una collaborazione? Mi trovi su [https://dm-square.github.io/](https://dm-square.github.io/)!
+Interessato a una collaborazione? Mi trovi su [https://dm-square.github.io/](https://dm-square.github.io/).
