@@ -1,0 +1,16 @@
+# TypeScript compilati
+*.js
+*.js.map
+*.d.ts
+*.d.ts.map
+
+# Dipendenze
+node_modules/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
