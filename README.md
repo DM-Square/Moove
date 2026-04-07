@@ -1,9 +1,7 @@
 # Moove 🛴
 
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?logo=typescript&logoColor=white)
-![License](https://img.shields.io/github/license/DM-Square/Moove)
 ![Last Commit](https://img.shields.io/github/last-commit/DM-Square/Moove)
-![Repo Size](https://img.shields.io/github/repo-size/DM-Square/Moove)
 
 Sistema di gestione mezzi di micromobilità urbana condivisa (bici, scooter, monopattini), sviluppato in **TypeScript**.
 
