@@ -7,6 +7,19 @@ Sistema di gestione mezzi di micromobilità urbana condivisa (bici, scooter, mon
 
 ---
 
+# Indice
+
+- [Descrizione](#Descrizione)
+- [Struttura del progetto](#Struttura-del-progetto)
+- [Entità](#Entità)
+- [Logica di funzionamento](#Logica-di-funzionamento)
+- [Esecuzione](#Esecuzione)
+- [Test](#Test)
+- [Tecnologie](#Tecnologie)
+- [Link](#Link)
+
+---
+
 ## Descrizione
 
 Moove è un'applicazione che modella il servizio di noleggio di mezzi elettrici in ambito urbano. Il progetto definisce le entità principali tramite interfacce TypeScript e ne implementa la logica attraverso classi concrete.
@@ -116,4 +129,4 @@ Il file include tre scenari di test:
 
 [CodePen del progetto](https://codepen.io/DM-Square/pen/raMZxjZ)
 
-Interessato a una collaborazione? Mi trovi su [https://dm-square.github.io/](https://dm-square.github.io/)
+Interessato a una collaborazione? Mi trovi su [https://dm-square.github.io/](https://dm-square.github.io/)!
