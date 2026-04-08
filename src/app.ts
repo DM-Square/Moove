@@ -1,4 +1,10 @@
-// Enum per gli stati dei mezzi
+// Enum per i tipi e gli stati dei mezzi
+
+enum TipoMezzo {
+  BICICLETTA = "bicicletta",
+  MONOPATTINO = "monopattino",
+  SCOOTER = "scooter",
+}
 
 enum StatoMezzo {
   DISPONIBILE = "disponibile",
@@ -8,24 +14,24 @@ enum StatoMezzo {
 // Interfacce per i mezzi, gli utenti e le città
 
 interface IMezzo {
-  tipo: string;
-  id: number;
+  readonly tipo: TipoMezzo;
+  readonly id: number;
   stato: StatoMezzo;
 
   assegnaUtente(utente: IUtente): void;
 }
 
 interface IUtente {
-  nome: string;
-  cognome: string;
-  email: string;
+  readonly nome: string;
+  readonly cognome: string;
+  readonly email: string;
   metodoPagamento: string;
 
   prenotaMezzo(mezzo: IMezzo): void;
 }
 
 interface ICitta {
-  nome: string;
+  readonly nome: string;
   mezzi: IMezzo[];
 
   aggiungiMezzo(mezzo: IMezzo): void;
@@ -34,12 +40,12 @@ interface ICitta {
 // Classi che implementano le interfacce
 
 class Mezzo implements IMezzo {
-  tipo: string;
-  id: number;
+  readonly tipo: TipoMezzo;
+  readonly id: number;
   stato: StatoMezzo;
   utente?: IUtente;
 
-  constructor(tipo: string, id: number, stato: StatoMezzo) {
+  constructor(tipo: TipoMezzo, id: number, stato: StatoMezzo) {
     this.tipo = tipo;
     this.id = id;
     this.stato = stato;
@@ -52,9 +58,9 @@ class Mezzo implements IMezzo {
 }
 
 class Utente implements IUtente {
-  nome: string;
-  cognome: string;
-  email: string;
+  readonly nome: string;
+  readonly cognome: string;
+  readonly email: string;
   metodoPagamento: string;
 
   constructor(
@@ -79,7 +85,7 @@ class Utente implements IUtente {
 }
 
 class Citta implements ICitta {
-  nome: string;
+  readonly nome: string;
   mezzi: IMezzo[];
 
   constructor(nome: string) {
@@ -95,9 +101,9 @@ class Citta implements ICitta {
 // Array di mezzi, utenti e città
 
 const mezzi: IMezzo[] = [
-  new Mezzo("bicicletta", 1, StatoMezzo.DISPONIBILE),
-  new Mezzo("monopattino", 2, StatoMezzo.DISPONIBILE),
-  new Mezzo("scooter", 3, StatoMezzo.DISPONIBILE),
+  new Mezzo(TipoMezzo.BICICLETTA, 1, StatoMezzo.DISPONIBILE),
+  new Mezzo(TipoMezzo.MONOPATTINO, 2, StatoMezzo.DISPONIBILE),
+  new Mezzo(TipoMezzo.SCOOTER, 3, StatoMezzo.DISPONIBILE),
 ];
 
 const utenti: IUtente[] = [
@@ -133,7 +139,7 @@ citta.forEach((c) => {
 
 console.log("\nTest 2: Aggiunta di nuovi mezzi alle città");
 
-const nuovoMezzo = new Mezzo("scooter", 4, StatoMezzo.DISPONIBILE);
+const nuovoMezzo = new Mezzo(TipoMezzo.SCOOTER, 4, StatoMezzo.DISPONIBILE);
 citta[0]!.aggiungiMezzo(nuovoMezzo);
 console.log(`Successo! Nuovo mezzo aggiunto a ${citta[0]!.nome}.`);
 console.log(`Mezzi totali in ${citta[0]!.nome}: ${citta[0]!.mezzi.length}:`);
