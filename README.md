@@ -63,7 +63,7 @@ Rappresenta un mezzo di trasporto disponibile nel servizio.
 | Proprietà | Tipo         | Descrizione                                                  |
 | --------- | ------------ | ------------------------------------------------------------ |
 | `tipo`    | `string`     | Tipologia del mezzo (`bicicletta`, `scooter`, `monopattino`) |
-| `id`      | `number`     | Identificativo univoco                                       |
+| `id`      | `string`     | Identificativo univoco                                       |
 | `stato`   | `StatoMezzo` | Stato corrente (`disponibile` / `in uso`)                    |
 
 Metodo: `assegnaUtente(utente: IUtente): void`

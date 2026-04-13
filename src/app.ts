@@ -18,7 +18,11 @@ citta.forEach((c) => {
 
 console.log("\nTest 2: Aggiunta di nuovi mezzi alle città");
 
-const nuovoMezzo = new Mezzo(TipoMezzo.SCOOTER, 4, StatoMezzo.DISPONIBILE);
+const nuovoMezzo = new Mezzo(
+  TipoMezzo.SCOOTER,
+  "mezzo_004",
+  StatoMezzo.DISPONIBILE,
+);
 citta[0]!.aggiungiMezzo(nuovoMezzo);
 console.log(`Successo! Nuovo mezzo aggiunto a ${citta[0]!.nome}.`);
 console.log(

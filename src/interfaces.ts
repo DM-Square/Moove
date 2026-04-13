@@ -2,7 +2,7 @@ import type { TipoMezzo, StatoMezzo } from "./enums";
 
 export interface IMezzo {
   readonly tipo: TipoMezzo;
-  readonly id: number;
+  readonly id: string;
   stato: StatoMezzo;
 
   assegnaUtente(utente: IUtente): void;

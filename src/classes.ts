@@ -3,11 +3,11 @@ import type { IMezzo, IUtente, ICitta } from "./interfaces";
 
 export class Mezzo implements IMezzo {
   readonly tipo: TipoMezzo;
-  readonly id: number;
+  readonly id: string;
   stato: StatoMezzo;
   utente?: IUtente;
 
-  constructor(tipo: TipoMezzo, id: number, stato: StatoMezzo) {
+  constructor(tipo: TipoMezzo, id: string, stato: StatoMezzo) {
     this.tipo = tipo;
     this.id = id;
     this.stato = stato;

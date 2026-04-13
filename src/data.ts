@@ -5,9 +5,9 @@ import type { IMezzo, IUtente, ICitta } from "./interfaces";
 import { Mezzo, Utente, Citta } from "./classes";
 
 export const mezzi: IMezzo[] = [
-  new Mezzo(TipoMezzo.BICICLETTA, 1, StatoMezzo.DISPONIBILE),
-  new Mezzo(TipoMezzo.MONOPATTINO, 2, StatoMezzo.DISPONIBILE),
-  new Mezzo(TipoMezzo.SCOOTER, 3, StatoMezzo.DISPONIBILE),
+  new Mezzo(TipoMezzo.BICICLETTA, "mezzo_001", StatoMezzo.DISPONIBILE),
+  new Mezzo(TipoMezzo.MONOPATTINO, "mezzo_002", StatoMezzo.DISPONIBILE),
+  new Mezzo(TipoMezzo.SCOOTER, "mezzo_003", StatoMezzo.DISPONIBILE),
 ];
 
 export const utenti: IUtente[] = [
