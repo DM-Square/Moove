@@ -3,7 +3,7 @@
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?logo=typescript&logoColor=white)
 ![Last Commit](https://img.shields.io/github/last-commit/DM-Square/Moove)
 
-Sistema di gestione mezzi di micromobilità urbana condivisa (bici, scooter, monopattini), sviluppato in **TypeScript**.
+Sistema di gestione mezzi di micromobilità urbana condivisa, sviluppato in **TypeScript**.
 
 ---
 
@@ -31,38 +31,54 @@ Moove è un'applicazione che modella il servizio di noleggio di mezzi elettrici 
 ```
 moove/
 ├── src/
-│   ├── app.ts         # Interfacce, classi e test
+│   ├── enums.ts        # Enum (TipoMezzo, StatoMezzo)
+│   ├── interfaces.ts   # Contratti/interfacce (IMezzo, IUtente, ICitta)
+│   ├── classes.ts      # Implementazioni concrete (Mezzo, Utente, Citta)
+│   ├── data.ts         # Inizializzazione dati per test
+│   ├── app.ts          # Entry point con test
 │   └── tsconfig.json
 ├── .gitignore
 ├── index.html
 └── README.md
 ```
 
+### Descrizione file
+
+| File            | Responsabilità                                         |
+| --------------- | ------------------------------------------------------ |
+| `enums.ts`      | Enum riutilizzabili (tipi mezzo, stati)                |
+| `interfaces.ts` | Contratti che definiscono la struttura delle entità    |
+| `classes.ts`    | Implementazioni delle interfacce                       |
+| `data.ts`       | Creazione e esportazione dei dati iniziali per testing |
+| `app.ts`        | Entry point che esegue i test                          |
+
 ---
 
 ## Entità
 
 ### `IMezzo`
+
 Rappresenta un mezzo di trasporto disponibile nel servizio.
 
-| Proprietà | Tipo | Descrizione |
-|-----------|------|-------------|
-| `tipo` | `string` | Tipologia del mezzo (`bicicletta`, `scooter`, `monopattino`) |
-| `id` | `number` | Identificativo univoco |
-| `stato` | `StatoMezzo` | Stato corrente (`disponibile` / `in uso`) |
+| Proprietà | Tipo         | Descrizione                                                  |
+| --------- | ------------ | ------------------------------------------------------------ |
+| `tipo`    | `string`     | Tipologia del mezzo (`bicicletta`, `scooter`, `monopattino`) |
+| `id`      | `number`     | Identificativo univoco                                       |
+| `stato`   | `StatoMezzo` | Stato corrente (`disponibile` / `in uso`)                    |
 
 Metodo: `assegnaUtente(utente: IUtente): void`
 
 ---
 
 ### `IUtente`
+
 Rappresenta un utente registrato al servizio.
 
-| Proprietà | Tipo | Descrizione |
-|-----------|------|-------------|
-| `nome` | `string` | Nome dell'utente |
-| `cognome` | `string` | Cognome dell'utente |
-| `email` | `string` | Indirizzo email |
+| Proprietà         | Tipo     | Descrizione                   |
+| ----------------- | -------- | ----------------------------- |
+| `nome`            | `string` | Nome dell'utente              |
+| `cognome`         | `string` | Cognome dell'utente           |
+| `email`           | `string` | Indirizzo email               |
 | `metodoPagamento` | `string` | Metodo di pagamento preferito |
 
 Metodo: `prenotaMezzo(mezzo: IMezzo): void`
@@ -70,12 +86,13 @@ Metodo: `prenotaMezzo(mezzo: IMezzo): void`
 ---
 
 ### `ICitta`
+
 Rappresenta una città in cui Moove opera.
 
-| Proprietà | Tipo | Descrizione |
-|-----------|------|-------------|
-| `nome` | `string` | Nome della città |
-| `mezzi` | `IMezzo[]` | Elenco dei mezzi disponibili |
+| Proprietà | Tipo       | Descrizione                  |
+| --------- | ---------- | ---------------------------- |
+| `nome`    | `string`   | Nome della città             |
+| `mezzi`   | `IMezzo[]` | Elenco dei mezzi disponibili |
 
 Metodo: `aggiungiMezzo(mezzo: IMezzo): void`
 
