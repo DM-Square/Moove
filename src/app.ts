@@ -1,127 +1,6 @@
-// Enum per i tipi e gli stati dei mezzi
-
-enum TipoMezzo {
-  BICICLETTA = "bicicletta",
-  MONOPATTINO = "monopattino",
-  SCOOTER = "scooter",
-}
-
-enum StatoMezzo {
-  DISPONIBILE = "disponibile",
-  IN_USO = "in uso",
-}
-
-// Interfacce per i mezzi, gli utenti e le città
-
-interface IMezzo {
-  readonly tipo: TipoMezzo;
-  readonly id: number;
-  stato: StatoMezzo;
-
-  assegnaUtente(utente: IUtente): void;
-}
-
-interface IUtente {
-  readonly nome: string;
-  readonly cognome: string;
-  readonly email: string;
-  metodoPagamento: string;
-
-  prenotaMezzo(mezzo: IMezzo): void;
-}
-
-interface ICitta {
-  readonly nome: string;
-  mezzi: IMezzo[];
-
-  aggiungiMezzo(mezzo: IMezzo): void;
-}
-
-// Classi che implementano le interfacce
-
-class Mezzo implements IMezzo {
-  readonly tipo: TipoMezzo;
-  readonly id: number;
-  stato: StatoMezzo;
-  utente?: IUtente;
-
-  constructor(tipo: TipoMezzo, id: number, stato: StatoMezzo) {
-    this.tipo = tipo;
-    this.id = id;
-    this.stato = stato;
-  }
-
-  assegnaUtente(utente: IUtente): void {
-    this.stato = StatoMezzo.IN_USO;
-    this.utente = utente;
-  }
-}
-
-class Utente implements IUtente {
-  readonly nome: string;
-  readonly cognome: string;
-  readonly email: string;
-  metodoPagamento: string;
-
-  constructor(
-    nome: string,
-    cognome: string,
-    email: string,
-    metodoPagamento: string,
-  ) {
-    this.nome = nome;
-    this.cognome = cognome;
-    this.email = email;
-    this.metodoPagamento = metodoPagamento;
-  }
-
-  prenotaMezzo(mezzo: IMezzo): void {
-    if (mezzo.stato === StatoMezzo.DISPONIBILE) {
-      mezzo.assegnaUtente(this);
-    } else {
-      throw new Error("Il mezzo non è disponibile");
-    }
-  }
-}
-
-class Citta implements ICitta {
-  readonly nome: string;
-  mezzi: IMezzo[];
-
-  constructor(nome: string) {
-    this.nome = nome;
-    this.mezzi = [];
-  }
-
-  aggiungiMezzo(mezzo: IMezzo): void {
-    this.mezzi.push(mezzo);
-  }
-}
-
-// Array di mezzi, utenti e città
-
-const mezzi: IMezzo[] = [
-  new Mezzo(TipoMezzo.BICICLETTA, 1, StatoMezzo.DISPONIBILE),
-  new Mezzo(TipoMezzo.MONOPATTINO, 2, StatoMezzo.DISPONIBILE),
-  new Mezzo(TipoMezzo.SCOOTER, 3, StatoMezzo.DISPONIBILE),
-];
-
-const utenti: IUtente[] = [
-  new Utente("Mario", "Rossi", "mario.rossi@example.com", "carta di credito"),
-  new Utente("Giovanni", "Marchi", "giovanni.marchi@example.com", "paypal"),
-  new Utente(
-    "Patrizia",
-    "Fanti",
-    "patrizia.fanti@example.com",
-    "carta di credito",
-  ),
-];
-
-const citta: ICitta[] = [
-  new Citta("Milano"),
-  new Citta("Roma"),
-  new Citta("Torino"),
-];
+import { mezzi, utenti, citta } from "./data";
+import { Mezzo } from "./classes";
+import { TipoMezzo, StatoMezzo } from "./enums";
 
 // Sezione di test
 
@@ -142,7 +21,9 @@ console.log("\nTest 2: Aggiunta di nuovi mezzi alle città");
 const nuovoMezzo = new Mezzo(TipoMezzo.SCOOTER, 4, StatoMezzo.DISPONIBILE);
 citta[0]!.aggiungiMezzo(nuovoMezzo);
 console.log(`Successo! Nuovo mezzo aggiunto a ${citta[0]!.nome}.`);
-console.log(`Mezzi totali in ${citta[0]!.nome}: ${citta[0]!.mezzi.length}:`);
+console.log(
+  `${citta[0]!.mezzi.length} mezzi ora disponibili a ${citta[0]!.nome}:`,
+);
 console.log(
   citta[0]!.mezzi
     .map((m) => `--- ${m.tipo} (ID: ${m.id}, Stato: ${m.stato})`)
