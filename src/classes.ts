@@ -4,18 +4,33 @@ import type { IMezzo, IUtente, ICitta } from "./interfaces";
 export class Mezzo implements IMezzo {
   readonly tipo: TipoMezzo;
   readonly id: string;
-  stato: StatoMezzo;
-  utente?: IUtente;
+  private _stato: StatoMezzo;
+  private _utente?: IUtente;
+
+  get stato(): StatoMezzo {
+    return this._stato;
+  }
+
+  get utente(): IUtente | undefined {
+    return this._utente;
+  }
 
   constructor(tipo: TipoMezzo, id: string, stato: StatoMezzo) {
     this.tipo = tipo;
     this.id = id;
-    this.stato = stato;
+    this._stato = stato;
   }
 
-  assegnaUtente(utente: IUtente): void {
-    this.stato = StatoMezzo.IN_USO;
-    this.utente = utente;
+  prenota(utente: IUtente): void {
+    if (this._stato !== StatoMezzo.DISPONIBILE) {
+      throw new Error("Il mezzo non è disponibile.");
+    }
+    this.assegnaUtente(utente);
+  }
+
+  private assegnaUtente(utente: IUtente): void {
+    this._stato = StatoMezzo.IN_USO;
+    this._utente = utente;
   }
 }
 
@@ -38,11 +53,7 @@ export class Utente implements IUtente {
   }
 
   prenotaMezzo(mezzo: IMezzo): void {
-    if (mezzo.stato === StatoMezzo.DISPONIBILE) {
-      mezzo.assegnaUtente(this);
-    } else {
-      throw new Error("Il mezzo non è disponibile");
-    }
+    mezzo.prenota(this);
   }
 }
 
