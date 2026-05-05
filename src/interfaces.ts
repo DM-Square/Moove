@@ -3,9 +3,10 @@ import type { TipoMezzo, StatoMezzo } from "./enums";
 export interface IMezzo {
   readonly tipo: TipoMezzo;
   readonly id: string;
-  stato: StatoMezzo;
+  readonly stato: StatoMezzo;
+  readonly utente?: IUtente;
 
-  assegnaUtente(utente: IUtente): void;
+  prenota(utente: IUtente): void;
 }
 
 export interface IUtente {
