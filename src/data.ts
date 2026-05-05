@@ -1,5 +1,3 @@
-// Creazione array per testare l'app
-
 import { TipoMezzo, StatoMezzo } from "./enums";
 import type { IMezzo, IUtente, ICitta } from "./interfaces";
 import { Mezzo, Utente, Citta } from "./classes";
