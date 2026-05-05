@@ -131,14 +131,6 @@ tsc
 
 I file compilati vengono emessi in `dist/`.
 
-### Avvio
-
-Dalla root del progetto, avviare un server HTTP locale (necessario per i moduli ES):
-
-```bash
-npx serve .
-```
-
 ---
 
 ## Test
